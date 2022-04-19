@@ -1,0 +1,62 @@
+[33mcommit 9b02301bfe17ab4966ba4bd9a47f6fde63f84794[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: wattt3 <chleodnr3@gmail.com>
+Date:   Tue Apr 19 08:34:30 2022 +0000
+
+    nvidia-docker-setting
+
+[33mcommit 11587f08b5e5fe21946f7c3d554ed807c87bb687[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 6f0cced 71f9d58
+Author: Daeuk Choi <37104691+wattt3@users.noreply.github.com>
+Date:   Tue Apr 19 15:58:09 2022 +0900
+
+    Merge pull request #25 from kdt-programmers-b6/docker-setting
+    
+    dockersetting
+
+[33mcommit 71f9d580dd3b23c7e1c36e025ed15be805ebe784[m[33m ([m[1;31morigin/docker-setting[m[33m)[m
+Author: Ubuntu <ubuntu@ip-172-31-24-84.ap-southeast-2.compute.internal>
+Date:   Mon Apr 18 06:54:45 2022 +0000
+
+    dockersetting
+
+[33mcommit 6f0cced0a35b238a618bebefb8afd10dbb924cc3[m
+Merge: 49abf7c e095524
+Author: Daeuk Choi <37104691+wattt3@users.noreply.github.com>
+Date:   Wed Apr 13 18:35:26 2022 +0900
+
+    Merge pull request #11 from kdt-programmers-b6/django
+    
+    django
+
+[33mcommit 49abf7cb4113c788a99b8a92c9144c441b0d612e[m
+Author: Daeuk Choi <37104691+wattt3@users.noreply.github.com>
+Date:   Wed Apr 13 18:17:15 2022 +0900
+
+    Create .gitignore
+
+[33mcommit e095524cbe366f6449e4d6259cfd83a43aabe292[m[33m ([m[1;31morigin/django[m[33m)[m
+Author: Ubuntu <ubuntu@ip-172-31-46-66.ap-northeast-2.compute.internal>
+Date:   Wed Apr 13 09:13:10 2022 +0000
+
+    django
+
+[33mcommit 83f78861fdffcafe58db524ceeea5a4586967b69[m
+Merge: 63e9661 7c8c99a
+Author: bae hong jik <63235354+bhj8551@users.noreply.github.com>
+Date:   Tue Apr 12 16:40:32 2022 +0900
+
+    Merge pull request #3 from HyunWooZZ/patch-1
+    
+    [Update] wiki 기본적인 뼈대 작성하였습니다.
+
+[33mcommit 7c8c99a14b7b3b9d846d217e2ff19c65b7d15aa7[m
+Author: HyunWoo Oh <92921909+HyunWooZZ@users.noreply.github.com>
+Date:   Tue Apr 12 15:37:47 2022 +0900
+
+    Update README.md
+
+[33mcommit 63e9661ab11aa46023433cf2ec9a06cb2d1669dc[m
+Author: bae hong jik <63235354+bhj8551@users.noreply.github.com>
+Date:   Mon Apr 11 16:50:27 2022 +0900
+
+    Initial commit
