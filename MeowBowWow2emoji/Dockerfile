@@ -1,3 +1,4 @@
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 FROM python:3.7.5
 
 ENV PYTHONUNBUFFERED 1 
