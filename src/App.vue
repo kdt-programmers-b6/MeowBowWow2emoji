@@ -11,10 +11,8 @@
 import background from './components/background.vue'
 import post from './components/post.vue'
 
-
 export default {
   name: 'App',
-
   components: {
     background,
     post,

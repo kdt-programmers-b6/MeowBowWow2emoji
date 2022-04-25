@@ -1,10 +1,25 @@
 <template>
     <v-container>
-        <v-file-input v-model="image" @change="Preview_image" show-size label="Image"></v-file-input>
-        <v-btn color="green" @click="add_image">아래 이미지 추가하기</v-btn>
-        <v-btn @click="upload" color="primary">이미지 변환하기</v-btn>
-        <v-img :src="url" contain height="400px" width="400px"></v-img>
-        <img id="img2" />
+        <v-row>
+          <v-row rows=2>
+            <v-col cols="5">
+              <v-file-input v-model="image"
+                  prepend-icon="mdi-camera"
+                  @change="[Preview_image(), add_image()]"
+                  show-size label="개나 고양이의 이미지를 넣어주세요!"
+                  ></v-file-input>
+            </v-col>
+            <v-col cols="2">
+              <v-btn @click="upload" color="primary" class="ml-auto">이미지 변환하기</v-btn>
+            </v-col>
+          </v-row>
+          <v-col cols="5">
+            <v-img :src="url" contain id="img1" height="300px" width='300px'></v-img>
+          </v-col>
+          <v-col cols="5">
+            <v-img :src="url" height="300px" width='300px' class="ml-auto" />
+          </v-col>
+        </v-row>
     </v-container>
 </template>
 
@@ -27,9 +42,7 @@ export default {
   methods: {
     async upload() {
       var fd = new FormData();
-      for(let i=0; i<this.files.length; ++i){
-        fd.append('pet_images', this.files[i]);
-        }
+      fd.append('pet_images', this.image);
       await axios.post('http://3.26.152.53/emoji/',
           fd, {
             headers: {
@@ -50,13 +63,14 @@ export default {
     },
     add_image() {
       console.log(this.image)
-      this.files.push(this.image)
-      console.log(this.files)
-    }
-}
+    },
+  }
 }
 </script>
 
-<style>
-  
+<style scoped>
+  img1 {
+    height: 400;
+    width: 400;
+  }
 </style>
