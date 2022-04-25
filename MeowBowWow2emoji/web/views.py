@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
+from django.http import JsonResponse
 from rest_framework import viewsets
 import os
 import shutil
@@ -17,6 +18,7 @@ def main_page(request):
 def emoji_api(request):
     images=request.FILES.getlist('pet_images')
     if request.method=="POST":
+        data=[]
         if not request.session.session_key:
             request.session.save()
 
@@ -24,12 +26,12 @@ def emoji_api(request):
 
         if os.path.isdir(user_path):
             shutil.rmtree(user_path)
-        print(images)
+
         for image in images:
             name=os.path.join(request.session.session_key,image.name)
             FileSystemStorage().save(name,image)
-
-    res = HttpResponse(status=200)
-    res["Access-Control-Allow-Origin"]= "*"
-    return res
-
+            data.append(os.path.join('http://3.26.152.53/media',name))
+        print(data)
+        res = JsonResponse({'img_path': data})
+        res["Access-Control-Allow-Origin"]= "*"
+        return res
