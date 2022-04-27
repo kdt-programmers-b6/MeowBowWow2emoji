@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container fluid>
         <video-background
             class="video-container"
             :src='require("@/assets/mp4/catdog2emoji.mp4")'

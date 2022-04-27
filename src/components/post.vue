@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-row>
-          <v-row rows=2>
+          <v-row>
             <v-col cols="5">
               <v-file-input v-model="image"
                   prepend-icon="mdi-camera"
@@ -13,12 +13,15 @@
               <v-btn @click="upload" color="primary" class="ml-auto">이미지 변환하기</v-btn>
             </v-col>
           </v-row>
-          <v-col cols="5">
-            <v-img :src="url" contain id="img1" height="300px" width='300px'></v-img>
-          </v-col>
-          <v-col cols="5">
+          <v-row justify="space-around">
+            <v-col cols="auto">
+              <v-img :src="url" contain id="img1" height="300px" width='300px' class="ml-auto"></v-img>
+            </v-col>  
+          <v-col cols="auto">
             <v-img :src="url" height="300px" width='300px' class="ml-auto" />
-          </v-col>
+          </v-col>  
+          </v-row>
+          
         </v-row>
     </v-container>
 </template>
@@ -26,11 +29,10 @@
 <script>
 import axios from 'axios'
 
-
 export default {
     // eslint-disable-next-line
     name: 'post',
-    components: {
+    components: { 
     },
     data: () => ({
     //
