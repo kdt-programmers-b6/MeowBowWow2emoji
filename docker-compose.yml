@@ -9,6 +9,7 @@ services:
         ports:
           - "80:80"
         volumes:
+          - ./nginx:/srv/docker-server
           - ./MeowBowWow2emoji:/srv/docker-server
           - ./log:/var/log/nginx
         depends_on:
