@@ -15,17 +15,18 @@
           </v-row>
           <v-row justify="space-around">
             <v-col cols="auto">
-              <v-img :src="url" contain id="img1" height="300px" width='300px' class="ml-auto"></v-img>
+              <v-card class="mx-auto" max-width="700">
+                <v-img :src="url" contain id="img1" height="300px" width='300px' class="mx-auto"></v-img>
+              <v-card-title> 개 또는 고양이의 이미지를 올려주세요! </v-card-title>
+              </v-card>
             </v-col>  
           <v-col cols="auto">
             <v-img :src="url" height="300px" width='300px' class="ml-auto" />
           </v-col>  
           </v-row>
-          
         </v-row>
     </v-container>
 </template>
-
 <script>
 import axios from 'axios'
 
