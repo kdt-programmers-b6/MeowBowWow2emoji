@@ -9,12 +9,18 @@ services:
         ports:
           - "80:80"
         volumes:
+          - ./nginx:/srv/docker-server
           - ./MeowBowWow2emoji:/srv/docker-server
           - ./log:/var/log/nginx
         depends_on:
           - django
+        networks:
+          - backend
 
     django:
+        runtime: nvidia
+        environment:
+          - NVIDIA_VISIBLE_DEVICES=all
         container_name: django
         build: ./MeowBowWow2emoji
         image: docker-server/django
@@ -23,3 +29,11 @@ services:
         volumes:
           - ./MeowBowWow2emoji:/srv/docker-server
           - ./log:/var/log/uwsgi
+        ports:
+          - "8000:8000"
+        networks:
+          - backend
+
+networks:
+    backend:
+        driver: bridge
