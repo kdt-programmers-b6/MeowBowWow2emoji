@@ -15,6 +15,9 @@ services:
           - django
 
     django:
+        runtime: nvidia
+        environment:
+          - NVIDIA_VISIBLE_DEVICES=all
         container_name: django
         build: ./MeowBowWow2emoji
         image: docker-server/django
