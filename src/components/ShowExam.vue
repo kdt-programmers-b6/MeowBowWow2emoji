@@ -1,9 +1,28 @@
 <template>
   <v-container>
-    <v-card class="mx-auto" max-width="700" @mouseover="changeImageWhen('over')" @mouseout="changeImageWhen('out')" >
-      <v-img :src="require('@/assets/sample_img/' + current_img1)" height="400px" width='400px' class="mx-auto" />
-      <v-card-title class="justify-center">마우스를 올려주세요!</v-card-title>
-    </v-card>
+    <v-row>
+      <v-col cols="4">
+        <v-card class="mx-auto" max-width="500" @mouseover="changeImageWhen1('over')" @mouseout="changeImageWhen1('out')" >
+          <v-card-title class="justify-center"></v-card-title>
+          <v-img :src="require('@/assets/sample_img/1_'+ current_img1)" height="300px" width='300px' class="mx-auto" />
+        </v-card>
+      </v-col>
+
+      <v-col cols="4">
+        <v-card class="mx-auto" max-width="500" @mouseover="changeImageWhen2('over')" @mouseout="changeImageWhen2('out')" >
+          <v-card-title class="justify-center"></v-card-title>
+          <v-img :src="require('@/assets/sample_img/2_'+ current_img2)" height="300px" width='300px' class="mx-auto" />
+        </v-card>
+      </v-col>
+
+      <v-col cols="4">
+        <v-card class="mx-auto" max-width="500" @mouseover="changeImageWhen3('over')" @mouseout="changeImageWhen3('out')" >
+          <v-card-title class="justify-center"></v-card-title>
+          <v-img :src="require('@/assets/sample_img/3_'+ current_img3)" height="300px" width='300px' class="mx-auto" />
+        </v-card>
+      </v-col>
+    </v-row>
+
   </v-container>
 </template>
 
@@ -13,14 +32,22 @@ export default {
   name: 'show_example',
   data: () => ({
     mouse_event: {
-      over: "1_fake.jpg",
-      out: "1_real.jpg",
+      over: "fake.jpg",
+      out: "real.jpg",
     },
-    current_img1: "1_real.jpg"
+    current_img1: "real.jpg",
+    current_img2: "real.jpg",
+    current_img3: "real.jpg"
  }),
  methods: {
-   changeImageWhen (event) {
+   changeImageWhen1 (event) {
      this.current_img1 = this.mouse_event[event]
+  },
+  changeImageWhen2 (event) {
+     this.current_img2 = this.mouse_event[event]
+  },
+  changeImageWhen3 (event) {
+     this.current_img3 = this.mouse_event[event]
   }
  }
 }
