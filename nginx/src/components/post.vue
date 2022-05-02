@@ -68,7 +68,7 @@ export default {
       var fd = new FormData();
       fd.append('pet_images', this.image);
       fd.append('animal', this.animal_check);
-      await axios.post('http://3.26.152.53:8000/emoji/',
+      await axios.post('http://13.210.122.72:8000/emoji/',
           fd, {
             headers: {
               'Content-Type': 'multipart/form-data',
