@@ -11,7 +11,7 @@ RUN curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     rm get-pip.py
 
 RUN apt-get -y install vim
-RUN apt-get install -y libglib2.0-0
+
 
 ENV PYTHONUNBUFFERED 1 
 
@@ -21,5 +21,10 @@ WORKDIR /srv/docker-server
 
 EXPOSE 8000
 
+RUN apt-get update
+RUN apt-get install -y libglib2.0-0
+RUN apt-get install -y libsm6 libxext6 libxrender-dev
+
 RUN pip install --upgrade pip
+RUN pip install opencv-python
 RUN pip install -r requirements.txt

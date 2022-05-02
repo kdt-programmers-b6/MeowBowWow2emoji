@@ -3,7 +3,7 @@ import cv2 #사용
 import numpy as np
 import os
 from .UGATIT_noargs import UGATIT
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 class Emoji:
   def __init__(self,checkpoint_path,args):
     tf.reset_default_graph()
