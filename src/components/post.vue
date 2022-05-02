@@ -18,15 +18,6 @@
               hide-details
             ></v-checkbox>
             </v-col>
-            <v-col cols="1"> 
-              <v-checkbox
-              v-model="version"
-              :label="`${version.toString()}`"
-              false-value="V1"
-              true-value="V2"
-              hide-details
-            ></v-checkbox>
-            </v-col>
             <v-col cols="2">
               <v-btn @click="upload" color="indigo" class="mx-2" dark fab>
                 <v-icon dark> mdi-camera-flip </v-icon>
@@ -43,7 +34,7 @@
           <v-col cols="4">
             <v-card class="mx-auto" max-width="700">
               <v-img id="img2" height="300px" width='300px' class="mx-auto" />
-              <v-card-title class="justify-center">출력 이미지</v-card-title>
+              <v-card-title class="justify-center">내가 출력되었다냥!</v-card-title>
             </v-card>
           </v-col>  
           </v-row>
@@ -63,8 +54,7 @@ export default {
     files: [],
     animal_check: 'Cat',  
     url: null,
-    image: null,
-    version: 'V1'
+    image: null
       }),
 
   methods: {
@@ -78,9 +68,7 @@ export default {
       var fd = new FormData();
       fd.append('pet_images', this.image);
       fd.append('animal', this.animal_check);
-      fd.append('version', this.version);
-
-      await axios.post('http://13.210.122.72/emoji/',
+      await axios.post('http://3.26.152.53:8000/emoji/',
           fd, {
             headers: {
               'Content-Type': 'multipart/form-data',
@@ -112,3 +100,5 @@ export default {
     width: 400;
   }
 </style>
+
+
