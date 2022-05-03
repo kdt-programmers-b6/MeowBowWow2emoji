@@ -7,6 +7,7 @@
                   prepend-icon="mdi-camera"
                   @change="[Preview_image(), add_image()]"
                   show-size label="개나 고양이의 이미지를 넣어주세요!"
+                  accept="image/x-png,image/gif,image/jpeg"
                   ></v-file-input>
             </v-col>
             <v-col cols="1"> 
@@ -42,7 +43,7 @@
             </v-col>  
           <v-col cols="4">
             <v-card class="mx-auto" max-width="700">
-              <v-img id="img2" height="300px" width='300px' class="mx-auto" />
+              <v-img :src="`data:image/png;base64, ${base64.encodedImage}`" height="300px" width='300px' class="mx-auto" />
               <v-card-title class="justify-center">출력 이미지</v-card-title>
             </v-card>
           </v-col>  
@@ -64,14 +65,22 @@ export default {
     animal_check: 'Cat',  
     url: null,
     image: null,
-    version: 'V1'
+    version: 'V1',
+    base64: {
+        encodedImage: null}
       }),
 
   methods: {
     addDropFile(e) {
        this.image = e.dataTransfer.files[0]; 
-       this.url= URL.createObjectURL(this.image)
-       console.log(this.image)},
+       this.url= URL.createObjectURL(this.image);
+       if (this.image.type == 'image/x-png' || this.image.type == 'image/jpeg'){
+         console.log(this.image)
+       }
+       else {
+       this.showAlert("error", "The file-type doesn't belong to image")
+       }
+    },
        
 
     async upload() {
@@ -88,12 +97,12 @@ export default {
           }
         ).then( Response => {
           console.log("Sucess");
-          document.getElementById("img2").src = Response.data['img_path'][0]
-          console.log(Response.data)
+          this.base64.encodedImage = Response.data['img_path']
+          console.log(this.base64.encodedImage)
+          console.log(Response.headers)
         })
         .catch(function () {
           console.log("Fail");
-          console.log(fd)
         });
     },
     Preview_image() {
