@@ -3,6 +3,8 @@ import cv2 #사용
 import numpy as np
 import os
 from .UGATIT_noargs import UGATIT
+
+
 # import matplotlib.pyplot as plt
 class Emoji:
   def __init__(self,checkpoint_path,args):
@@ -43,9 +45,8 @@ class Emoji:
     #plt.figure(figsize=(16, 8))
     #plt.axis('off')
     #plt.imshow(img_output)
-
     cv2.imwrite(os.getcwd()+'/media/result/%s' % os.path.basename(img_path), img_output[:, :, ::-1])
-    return "/media/result"+img_path
+    return open(os.getcwd()+'/media/result/'+os.path.basename(img_path), 'rb')
     #return img_output
 
 def parse_args():

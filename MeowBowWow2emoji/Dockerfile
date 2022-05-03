@@ -12,7 +12,6 @@ RUN curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
 
 RUN apt-get -y install vim
 
-
 ENV PYTHONUNBUFFERED 1 
 
 RUN mkdir /srv/docker-server
