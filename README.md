@@ -18,7 +18,7 @@
 (그림 삽입 해야 함)
 
 ##Tech stacks
-**Pytorch**
+**tensorflow**
 **Vue.js**
 **Django**
 
