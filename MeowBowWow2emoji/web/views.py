@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .emoji_model import emoji
 from . import models
 from PIL import Image
+import base64
 
 # Create your views here.
 def main_page(request):
@@ -43,13 +44,13 @@ def emoji_api(request):
             session=request.session.session_key
         ).values('uploadedFile')
 
-        img_path_data = ""
+        data_base64 = ""
         for d in data:
-            img_path_data = emoji_model.selfie2anime(img_path=os.getcwd()+'/media/'+d['uploadedFile'])
-        
-        res = JsonResponse({'img_path': "http://13.210.122.72/"+img_path_data})#list(data) emoji.parse_args()
+            data_base64 = emoji_model.selfie2anime(img_path=os.getcwd()+'/media/'+d['uploadedFile'])
+        data_base64 = base64.b64encode(data_base64.read())
+        res = JsonResponse({'img_path': data_base64.decode('utf8')})#list(data) emoji.parse_args()
         res["Access-Control-Allow-Origin"]= "*"
-        print(os.getcwd())
+
         return res
 
 def ARG(animal, version):
