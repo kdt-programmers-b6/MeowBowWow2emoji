@@ -51,7 +51,6 @@ class Emoji:
 
 def parse_args():
     parser = {}
-    parser['phase']='train'
     parser['light']=False
     parser['dataset']='selfie2anime'
 
@@ -59,7 +58,7 @@ def parse_args():
     parser['iteration']=10000
     parser['batch_size']=1
     parser['print_freq']=1000
-    parser['save_freq']=1000
+    parser['save_freq']=10000
     parser['decay_flag']=True
     parser['decay_epoch']=50
 
@@ -73,7 +72,7 @@ def parse_args():
 
     parser['smoothing']=True
 
-    parser['ch']=64
+    parser['ch']=16
     parser['n_res']=4
     parser['n_dis']=6
     parser['n_critic']=1
