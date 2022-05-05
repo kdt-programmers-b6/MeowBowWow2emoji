@@ -7,7 +7,8 @@ from .UGATIT_noargs import UGATIT
 
 # import matplotlib.pyplot as plt
 class Emoji:
-  def __init__(self,checkpoint_path,args):
+  def __init__(self,ARG):
+    checkpoint_path,args = ARG[0], ARG[1]
     tf.reset_default_graph()
     sess = tf.Session(config=tf.ConfigProto(allow_soft_placement=True))
     gan = UGATIT(args)

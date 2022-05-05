@@ -7,6 +7,7 @@ from django.core.files.storage import FileSystemStorage
 from django.views.decorators.csrf import csrf_exempt
 from .emoji_model import emoji
 from . import models
+from . import apps
 from PIL import Image
 import base64
 
@@ -23,8 +24,8 @@ def emoji_api(request):
             request.session.save()
 
 
-        path , arg_dict = ARG(request.POST.get('animal'),request.POST.get('version'))
-        emoji_model = emoji.Emoji(path, arg_dict)
+        emoji_model = choice_model(request.POST.get('animal'),request.POST.get('version'))#request.POST.get('animal'),request.POST.get('version')  'Cat','V1'
+        
         models.Document.objects.filter(session=request.session.session_key).delete()
         
 
@@ -35,10 +36,6 @@ def emoji_api(request):
             session=request.session.session_key
             )
             document.save()
-            #document.target_session(request.session.session_key)
-            #name=os.path.join(request.session.session_key,image.name)
-            #FileSystemStorage().save(name,image)
-            #data.append(os.path.join('http://3.26.152.53/media',name))
 
         data = models.Document.objects.filter(
             session=request.session.session_key
@@ -53,21 +50,17 @@ def emoji_api(request):
 
         return res
 
-def ARG(animal, version):
-    path = os.getcwd()+'/web/emoji_model/checkpoint/'
-    arg_dict = emoji.parse_args()
-    
+def choice_model(animal, version):
+    return_model = ''
     if animal == 'Cat':
         if version == 'V1':# v1 => light버전
-            path += 'UGATIT_CAT_DOWN/UGATIT_light.model-700000'
-            arg_dict['light']=True
-            arg_dict['ch']= 64
+            return_model = apps.WebConfig.emoji_model_cat_v1
         else:#v2 => V1버전
-            path += 'UGATIT_CAT_V1/UGATIT.model-920000'
+            return_model = apps.WebConfig.emoji_model_cat_v2
     else:#dog
         if version == 'V1':
-            path += 'UGATIT_DOG_V1/UGATIT.model-810000'
+            return_model = apps.WebConfig.emoji_model_dog_v1
         else:#v2
-            path += 'UGATIT_DOG_V2/UGATIT.model-640000'
+            return_model = apps.WebConfig.emoji_model_dog_v2
 
-    return path, arg_dict
+    return return_model
