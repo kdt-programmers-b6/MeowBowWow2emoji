@@ -37,9 +37,9 @@
 **Vue.js**
 **Django**
 
+
 ## How to use? 
 
-(유튜브 링크 첨부해야함)
-
+https://www.youtube.com/watch?v=pTU9-xj5LUA&feature=youtu.be
 
 
