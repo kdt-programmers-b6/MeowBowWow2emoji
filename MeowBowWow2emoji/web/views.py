@@ -22,11 +22,11 @@ def emoji_api(request):
         if not request.session.session_key:
             request.session.save()
 
-        path , arg_dict = ARG('cat','v1')
+
+        path , arg_dict = ARG(request.POST.get('animal'),request.POST.get('version'))
         emoji_model = emoji.Emoji(path, arg_dict)
         models.Document.objects.filter(session=request.session.session_key).delete()
-
-
+        
 
         for image in images:
             document = models.Document(
@@ -56,56 +56,18 @@ def emoji_api(request):
 def ARG(animal, version):
     path = os.getcwd()+'/web/emoji_model/checkpoint/'
     arg_dict = emoji.parse_args()
-    if animal == 'cat':
-        path += 'UGATIT_CAT_DOWN/UGATIT_light.model-700000'
-    else:
-        path += 'UGATIT_DOG_DOWN/UGATIT_light.model-700000'
-    if version == 'v1':
-        arg_dict['light']=True
-        arg_dict['epoch']=80
-        arg_dict['iteration']=1000 
-        arg_dict['batch_size']=1
-        arg_dict['print_freq']=1000
-        arg_dict['save_freq']=1000
-        arg_dict['decay_flag']=True
-        arg_dict['decay_epoch']=50
-        arg_dict['lr']=0.0001
-        arg_dict['GP_ld']=10
-        arg_dict['adv_weight']=1
-        arg_dict['cycle_weight']= 10
-        arg_dict['identity_weight']= 10
-        arg_dict['cam_weight']= 1000
-        arg_dict['gan_type']= 'lsgan'
-        arg_dict['ch']= 64
-        arg_dict['n_res']= 4
-        arg_dict['n_dis']= 6
-        arg_dict['n_critic']= 1
-        arg_dict['sn']= True
-        arg_dict['img_size']=256
-        arg_dict['img_ch']=3
-        arg_dict['augment_flag'] = True
-    elif version == 'v2':
-        arg_dict['light']=True
-        arg_dict['epoch']=80
-        arg_dict['iteration']=1000 
-        arg_dict['batch_size']=1
-        arg_dict['print_freq']=1000
-        arg_dict['save_freq']=1000
-        arg_dict['decay_flag']=True
-        arg_dict['decay_epoch']=50
-        arg_dict['lr']=0.0001
-        arg_dict['GP_ld']=10
-        arg_dict['adv_weight']=1
-        arg_dict['cycle_weight']= 10
-        arg_dict['identity_weight']= 10
-        arg_dict['cam_weight']= 1000
-        arg_dict['gan_type']= 'lsgan'
-        arg_dict['ch']= 64
-        arg_dict['n_res']= 4
-        arg_dict['n_dis']= 6
-        arg_dict['n_critic']= 1
-        arg_dict['sn']= True
-        arg_dict['img_size']=256
-        arg_dict['img_ch']=3
-        arg_dict['augment_flag'] = True
+    
+    if animal == 'Cat':
+        if version == 'V1':# v1 => light버전
+            path += 'UGATIT_CAT_DOWN/UGATIT_light.model-700000'
+            arg_dict['light']=True
+            arg_dict['ch']= 64
+        else:#v2 => V1버전
+            path += 'UGATIT_CAT_V1/UGATIT.model-920000'
+    else:#dog
+        if version == 'V1':
+            path += 'UGATIT_DOG_V1/UGATIT.model-810000'
+        else:#v2
+            path += 'UGATIT_DOG_V2/UGATIT.model-640000'
+
     return path, arg_dict
