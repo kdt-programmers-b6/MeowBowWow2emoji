@@ -17,15 +17,17 @@
 
 ![architecture drawio](https://user-images.githubusercontent.com/92921909/166636014-44db19af-5154-480f-a933-2c2c958db480.png)
 
-
-
+ **Model**
+ 
+ https://arxiv.org/abs/1907.10830
+ https://github.com/taki0112/UGATIT
 
 ## Data Source
 **AFHQ**
 ![afhq](https://user-images.githubusercontent.com/92921909/166412539-b8f08d89-f19d-4fbb-afee-d7c9fffd6bec.PNG)
 
 
-**IMOJI**
+**EMOJI**
 
 ![12033](https://user-images.githubusercontent.com/92921909/166412714-bcb6dc79-10a8-4f8d-a8e4-79b81f3e648f.png)
 ![11834](https://user-images.githubusercontent.com/92921909/166412718-3fddf596-fecb-4ff3-87ee-cb1b6cb8883c.png)
