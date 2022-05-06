@@ -19,7 +19,7 @@
 
  **Model**
  
- https://arxiv.org/abs/1907.10830
+ https://arxiv.org/abs/1907.10830 <br>
  https://github.com/taki0112/UGATIT
 
 ## Data Source
