@@ -1,0 +1,5 @@
+FROM apache/airflow:2.3.2-python3.8
+COPY /plugins/requirements.txt /requirements.txt
+
+RUN python3 -m pip install --root --upgrade pip
+RUN python3 -m pip install --no-cache-dir --root -r /requirements.txt
