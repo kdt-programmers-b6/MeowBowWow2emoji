@@ -1,6 +1,0 @@
-model_checkpoint_path: "UGATIT_light.model-700000"
-all_model_checkpoint_paths: "UGATIT_light.model-696000"
-all_model_checkpoint_paths: "UGATIT_light.model-697000"
-all_model_checkpoint_paths: "UGATIT_light.model-698000"
-all_model_checkpoint_paths: "UGATIT_light.model-699000"
-all_model_checkpoint_paths: "UGATIT_light.model-700000"

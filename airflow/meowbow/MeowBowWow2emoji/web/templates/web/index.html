@@ -1,0 +1,84 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript">
+      //이미지 미리보기
+      var sel_file;
+   
+      $(document).ready(function() {
+          $("#file1").on("change", handleImgFileSelect);
+      });
+   
+      function handleImgFileSelect(e) {
+        const files = e.target.files;
+        const filesArr = Array.prototype.slice.call(files);
+   
+        const reg = /(.*?)\/(jpg|jpeg|png|bmp)$/;
+   
+          filesArr.forEach(function(f) {
+              if (!f.type.match(reg)) {
+                  alert("확장자는 이미지 확장자만 가능합니다.");
+                  return;
+              }
+   
+              sel_file = f;
+   
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  $("#img").attr("src", e.target.result);
+              }
+              reader.readAsDataURL(f);
+          });
+      }
+  </script>
+      
+  <script>
+    
+
+  function fn_submit(){
+    $.ajaxSetup({
+        headers: { "X-CSRFToken": '{{csrf_token}}' }
+    });
+    const form = new FormData();
+          form.append( "pet_images", $("#file1")[0].files[0] );
+           jQuery.ajax({
+               url : "http://127.0.0.1:8000/emoji/"
+             , type : "POST"
+             , processData : false
+             , contentType : false
+             , data : form
+             , success:function(data) {
+                alert("성공하였습니다.");
+                console.log(data)
+             }
+         });
+  }
+  </script>
+
+</head>
+<body>
+  <div>
+    <label for="file1">파일</label> 
+    <input type="file" id="file1" name="file1"> 
+    <button id="btn_submit" onclick="javascript:fn_submit()">전송</button>    
+  </div>
+ 
+  <div>
+       <div class="img_wrap">
+           <img id="img" />
+       </div>
+       <div class="img_wrap">
+        <img id="img2" />
+    </div>
+    
+  </div>
+</body>
+</html>

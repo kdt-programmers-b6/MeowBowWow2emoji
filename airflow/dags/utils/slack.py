@@ -11,7 +11,7 @@ class SlackAlert:
         text = f"""
             date: {datetime.today().strftime('%Y-%m-%d')}
             logs: 
-                Success! 
+                Succeed!!!
                 task id: {context.get('task_instance').task_id}, 
                 dag id: {context.get('task_instance').dag_id},
                 run_id: {context.get('task_instance').run_id},
@@ -20,13 +20,13 @@ class SlackAlert:
                 log url: {context.get('task_instance').log_url}
             """
         self.client.chat_postMessage(channel=self.channel, text=text)
-        
 
-    def fail_msg(self, context):
+
+    def slack_alarm_fail(self, context):
         text = f"""
             date: {datetime.today().strftime('%Y-%m-%d')}  
             logs: 
-                Fail!
+                Failed... 
                 task id: {context.get('task_instance').task_id}, 
                 dag id: {context.get('task_instance').dag_id},
                 run_id: {context.get('task_instance').run_id},

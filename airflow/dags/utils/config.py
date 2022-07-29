@@ -1,1 +1,2 @@
 SLACK_BOT_TOKEN = ""
+CHANNEL = ""
