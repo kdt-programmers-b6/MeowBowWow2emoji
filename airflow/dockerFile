@@ -1,5 +1,12 @@
 FROM apache/airflow:2.3.2-python3.8
-COPY /plugins/requirements.txt /requirements.txt
+COPY ./requirements.txt /requirements.txt
+USER root
 
+RUN useradd user
 RUN python3 -m pip install --root --upgrade pip
-RUN python3 -m pip install --no-cache-dir --root -r /requirements.txt
+RUN python3 -m pip --version
+# gssapi krb5-config not found error
+# RUN python3 -m pip install --root --no-cache-dir -r /requirements.txt
+# RUN that directly using by exec after run container! 
+
+USER user
